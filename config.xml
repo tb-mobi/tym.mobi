@@ -1,0 +1,54 @@
+<configuration xmlns="http://logging.apache.org/log4php/">
+    <appender name="common" class="LoggerAppenderDailyFile">
+		<layout class="LoggerLayoutPattern">
+            <param name="conversionPattern" value="%date [%pid] %file line %line %logger %-5level %msg%n" />
+        </layout>
+        <param name="file" value="log/common-%s.log" />
+        <param name="datePattern" value="Y-m-d" />
+    </appender>
+    <appender name="cmd" class="LoggerAppenderConsole">
+		    <layout class="LoggerLayoutPattern">
+          <param name="conversionPattern" value="%date [%pid] %class.%line %logger %-5level %msg%n" />
+        </layout>
+    </appender>
+    <appender name="oms" class="LoggerAppenderDailyFile">
+		    <layout class="LoggerLayoutPattern">
+          <param name="conversionPattern" value="%date [%pid] %class.%line %logger %-5level %msg%n" />
+        </layout>
+        <param name="file" value="log/oms-%s.log" />
+        <param name="datePattern" value="Y-m-d" />
+    </appender>
+    <appender name="vtbi" class="LoggerAppenderDailyFile">
+		    <layout class="LoggerLayoutPattern">
+          <param name="conversionPattern" value="%date [%pid] %class.%line %logger %-5level %msg%n" />
+        </layout>
+        <param name="file" value="log/vtbi-%s.log" />
+        <param name="datePattern" value="Y-m-d" />
+    </appender>
+    <appender name="fimi" class="LoggerAppenderDailyFile">
+		    <layout class="LoggerLayoutPattern">
+          <param name="conversionPattern" value="%date [%pid] %class.%line %logger %-5level %msg%n" />
+        </layout>
+        <param name="file" value="log/fimi-%s.log" />
+        <param name="datePattern" value="Y-m-d" />
+    </appender>
+
+	   <logger name="OMSAdapter">
+       <level value="TRACE"/>
+       <appender_ref ref="oms"/>
+    </logger>
+	   <logger name="VTBIAdapter">
+       <level value="TRACE"/>
+       <appender_ref ref="vtbi"/>
+    </logger>
+
+	   <logger name="FIMIAdapter">
+       <level value="TRACE"/>
+       <appender_ref ref="fimi"/>
+    </logger>
+    <root>
+        <level value="INFO"/>
+        <appender_ref ref="common" />
+        <appender_ref ref="cmd" />
+    </root>
+</configuration>
